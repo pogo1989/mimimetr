@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Mimimeter</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="page-container">
+    <div class="signedin" th:if="${principal != null}">
+        Логин: <span th:text="${principal.name}"/>
+        <a href="/logout">Выйти</a>
+    </div>
+    <h1><a href="/">Mimimeter</a></h1>
+    Выберите категорию
+    <h3 th:each="group: ${groups}">
+        <a th:href="@{/voting/start/{id}(id=${group.id})}" th:text="${group.name}"/>
+    </h3>
+</div>
+</body>
+</html>

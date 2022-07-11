@@ -1,0 +1,18 @@
+keycloak:
+  auth-server-url: https://keycloak.some-test.ru/auth
+  realm: mimi
+  resource: mimiapp
+  public-client: true
+  security-constraints:
+    - authRoles: [user]
+      securityCollections: [patterns: [/voting/*]]
+  principal-attribute: preferred_username
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mimidev
+    driver-class-name: org.postgresql.Driver
+    username: mimidev
+    password: mimidev
+  liquibase:
+    change-log: classpath:liquibase/changelog.xml

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet id="1" author="pogo1989">
+
+        <createTable tableName="candidates_group">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="candidates_group_id_pk"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="candidate">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="candidate_id_pk"/>
+            </column>
+            <column name="group_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="img_url" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="votes_count" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="candidate" baseColumnNames="group_id"
+                                 constraintName="candidate__group_id_fk" referencedTableName="candidates_group"
+                                 referencedColumnNames="id"/>
+
+        <createTable tableName="voting_session">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="voting_session_id_pk"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_finished" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="voting_pair">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="voting_pairs_id_pk"/>
+            </column>
+            <column name="session_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_candidate" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="second_candidate" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="verdict" type="int"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="voting_pair" baseColumnNames="session_id"
+                                 constraintName="voting_pair__session_id_fk" referencedTableName="voting_session"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>

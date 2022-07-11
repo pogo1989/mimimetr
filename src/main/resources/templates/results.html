@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Mimimeter</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="page-container">
+    <div class="signedin" th:if="${principal != null}">
+        Логин: <span th:text="${principal.name}"/>
+        <a href="/logout">Выйти</a>
+    </div>
+    <h1><a href="/">Mimimeter</a></h1>
+    <h2 th:text="${group.name}"/>
+    <div class="results-item-container" th:each="candidate,iter: ${result.candidates}">
+        <img th:src="${candidate.imgUrl}" width="300"/>
+        <div class="results-item-text">
+            <h3 th:text="${candidate.name}"/>
+            <div>Голосов: <span class="votes-count" th:text="${candidate.votesCount}"/></div>
+            <div>Место: <span class="votes-count" th:text="${iter.index + 1}"/></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

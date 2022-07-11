@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Mimimeter</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="page-container">
+    <div class="signedin" th:if="${principal != null}">
+        Логин: <span th:text="${principal.name}"/>
+        <a href="/logout">Выйти</a>
+    </div>
+    <h1>Mimimeter</h1>
+    Добро пожаловать в мимимиметр!<br/>
+    <i>1. Выберите нужную категорию<br/>
+        2. Кликайте на животное, которое вам понравилось больше</i>
+    <h2>
+        <a href="/voting/groups">Перейти к выбору категории</a>
+    </h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet id="2" author="pogo1989">
+
+        <insert tableName="candidates_group">
+            <column name="name">Коты и кошки</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">1</column>
+            <column name="name">Вася Вечнохмурый</column>
+            <column name="img_url">https://imgs.some-test.ru/cat1.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">1</column>
+            <column name="name">Петя Зеленоглазый</column>
+            <column name="img_url">https://imgs.some-test.ru/cat2.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">1</column>
+            <column name="name">Боря Пожизнинедовольный</column>
+            <column name="img_url">https://imgs.some-test.ru/cat3.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">1</column>
+            <column name="name">Гоша Мутантолисый</column>
+            <column name="img_url">https://imgs.some-test.ru/cat4.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">1</column>
+            <column name="name">Пантелеймон Говорливый</column>
+            <column name="img_url">https://imgs.some-test.ru/cat5.jpg</column>
+        </insert>
+
+        <insert tableName="candidates_group">
+            <column name="name">Квартирные собаки</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">2</column>
+            <column name="name">Федя Кудрявый</column>
+            <column name="img_url">https://imgs.some-test.ru/dog1.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">2</column>
+            <column name="name">Андрей Неопределившийся</column>
+            <column name="img_url">https://imgs.some-test.ru/dog2.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">2</column>
+            <column name="name">Коля Агрессивный</column>
+            <column name="img_url">https://imgs.some-test.ru/dog3.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">2</column>
+            <column name="name">Максим Чернорыжий</column>
+            <column name="img_url">https://imgs.some-test.ru/dog4.jpg</column>
+        </insert>
+        <insert tableName="candidate">
+            <column name="group_id">2</column>
+            <column name="name">Юрий Долготелый</column>
+            <column name="img_url">https://imgs.some-test.ru/dog5.jpg</column>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

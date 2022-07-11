@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Mimimeter</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="page-container">
+    <div class="signedin" th:if="${principal != null}">
+        Логин: <span th:text="${principal.name}"/>
+        <a href="/logout">Выйти</a>
+    </div>
+    <h1><a href="/">Mimimeter</a></h1>
+    Ваш выбор?
+    <div id="pair_container" th:pair_id="${pairId}" th:group_id="${groupId}">
+        <div id="first_candidate">
+            <a class="candidate" href="#" th:candidate_id="${first.id}">
+                <img th:src="${first.imgUrl}" width="300"/>
+                <div th:text="${first.name}"/>
+            </a>
+        </div>
+        <div id="second_candidate">
+            <a class="candidate" href="#" th:candidate_id="${second.id}">
+                <img th:src="${second.imgUrl}" width="300"/>
+                <div th:text="${second.name}"/>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $(".candidate").on("click", function() {
+            let pairId = $("#pair_container").attr("pair_id");
+            let groupId = $("#pair_container").attr("group_id");
+            let candidateId = $(this).attr("candidate_id");
+            $.ajax({
+                url: "/voting/vote",
+                method: "POST",
+                contentType : 'application/json',
+                dataType: "json",
+                xhrFields: { withCredentials: true },
+                data: JSON.stringify({
+                    "pairId": pairId,
+                    "candidateId": candidateId
+                }),
+                success: function(data) {
+                    if (data.nextPairId == 0) {
+                        window.location.replace("/voting/results/" + groupId);
+                    } else {
+                        window.location.replace("/voting/pair/" + data.nextPairId);
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

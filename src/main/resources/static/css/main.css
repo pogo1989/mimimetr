@@ -1,0 +1,44 @@
+body {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.page-container {
+    display: inline-block;
+    width: 1000px;
+    border: 1px solid #CCC;
+    text-align: center;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.signedin {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: inline-block;
+}
+
+#first_candidate, #second_candidate {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #DDD;
+    display: inline-block;
+}
+
+.results-item-container {
+    display: inline-block;
+    border: 1px solid #DDD;
+    margin: 10px;
+    padding: 10px;
+    width: 800px;
+    text-align: left;
+    position: relative;
+}
+
+.results-item-text {
+    position: absolute;
+    top: 0;
+    left: 330px;
+}
